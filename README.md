@@ -1,4 +1,4 @@
-# 📲 WhatsApp Weekly Bot
+# 📲 WhatsApp Automated Messages
 
 A Node.js automation bot that sends scheduled messages to WhatsApp group chats using WhatsApp Web automation.
 
