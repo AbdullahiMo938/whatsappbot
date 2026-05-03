@@ -57,7 +57,7 @@ client.on('authenticated', () => {
   readyTimeout = setTimeout(() => {
     console.log("⚠️ Ready timeout detected → restarting bot...");
     process.exit(1); // PM2 will restart it
-  }, 60000); // 60 seconds
+  }, 240000); // 4 minutes
 });
 
 // =========================
@@ -91,19 +91,20 @@ client.on('ready', async () => {
 
     console.log("⏰ Cron job started (every 1 min)");
 
-    cron.schedule('*/1 * * * *', async () => {
-      try {
-        console.log("📤 Sending test message...");
+    cron.schedule('35 10 * * *',  async () => {
+    const now = new Date();
+    console.log(`⏰ Cron triggered at ${now.toLocaleTimeString()}`);
+  try {
+    const chat = await client.getChatById('120363408469506959@g.us');
 
-        const chat = await client.getChatById(testGroupId);
+    await chat.sendMessage('📢 test 1');
+    await chat.sendMessage('✅ test 2');
 
-        await chat.sendMessage("TEST ✔ bot working");
-
-        console.log("✅ Message sent ✔");
-      } catch (err) {
-        console.error("❌ Send error:", err);
-      }
-    });
+    console.log('Both messages sent ✔');
+  } catch (err) {
+    console.error(err);
+  }
+});
 
   } catch (err) {
     console.error("❌ Chat load failed:", err);

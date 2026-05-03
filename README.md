@@ -3,7 +3,6 @@
 A Node.js automation bot that sends scheduled messages to WhatsApp group chats using WhatsApp Web automation.
 
 Built using:
-- :contentReference[oaicite:0]{index=0}
 - Node.js
 - node-cron
 - Puppeteer
